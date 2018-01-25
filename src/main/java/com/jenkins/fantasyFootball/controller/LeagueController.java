@@ -1,25 +1,20 @@
 package com.jenkins.fantasyFootball.controller;
 
-import com.jenkins.fantasyFootball.entity.BowlGame;
 import com.jenkins.fantasyFootball.entity.League;
-import com.jenkins.fantasyFootball.entity.Pick;
-import com.jenkins.fantasyFootball.entity.PickSet;
 import com.jenkins.fantasyFootball.persist.LeagueRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -34,6 +29,7 @@ public class LeagueController {
     // -------------------- Get all leagues -------------------
     @RequestMapping(value="", method= RequestMethod.GET)
     @ResponseBody
+    @CrossOrigin
     ResponseEntity<List<League>> getLeagues() {
         logger.debug("Getting all leagues");
 
@@ -49,6 +45,7 @@ public class LeagueController {
 
     // -------------------- Get a single league by id -------------------
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
+    @CrossOrigin
     ResponseEntity<?> getLeague(@PathVariable("id") String id) {
         logger.debug("Getting league with id: {}", id);
 
@@ -64,6 +61,7 @@ public class LeagueController {
 
     // -------------------- Create a new league -------------------
     @RequestMapping(value="", method=RequestMethod.POST)
+    @CrossOrigin
     public ResponseEntity<?> createLeague(@RequestBody League league) {
         logger.debug("Inserting new league with name: {}", league.getName());
 
@@ -79,6 +77,7 @@ public class LeagueController {
 
     // -------------------- Update a league -------------------
     @RequestMapping(value="/{id}", method=RequestMethod.PUT)
+    @CrossOrigin
     public ResponseEntity<?> updateLeague(@PathVariable("id") String id, @RequestBody League league) {
         logger.debug("Updating league with id: {}", id);
 
@@ -100,6 +99,7 @@ public class LeagueController {
 
     // -------------------- Delete a league -------------------
     @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+    @CrossOrigin
     public ResponseEntity<League> deleteLeague(@PathVariable("id") String id) {
         logger.debug("Deleting league with id: {}", id);
         if (leagueRepository.findOne(id) == null) {
@@ -113,6 +113,7 @@ public class LeagueController {
 
     // -------------------- Delete all leagues -------------------
     @RequestMapping(value="", method=RequestMethod.DELETE)
+    @CrossOrigin
     public ResponseEntity<League> deleteLeague() {
         logger.debug("Deleting all leagues");
 

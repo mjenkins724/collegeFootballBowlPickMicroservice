@@ -7,25 +7,15 @@ import java.util.List;
 
 public class PickSet {
 
-    private Integer leagueId;
     private String userName;
     private List<Pick> userPicks;
 
     public PickSet() {
     }
 
-    public PickSet(Integer leagueId, String userName, List<Pick> userPicks) {
-        this.leagueId = leagueId;
+    public PickSet(String userName, List<Pick> userPicks) {
         this.userName = userName;
         this.userPicks = userPicks;
-    }
-
-    public Integer getLeagueId() {
-        return leagueId;
-    }
-
-    public void setLeagueId(Integer leagueId) {
-        this.leagueId = leagueId;
     }
 
     public String getUserName() {
@@ -47,7 +37,6 @@ public class PickSet {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("PickSet{");
-        sb.append("leagueId=").append(leagueId);
         sb.append(", userName='").append(userName).append('\'');
         sb.append(", userPicks=").append(userPicks);
         sb.append('}');
